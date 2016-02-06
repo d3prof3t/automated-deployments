@@ -1,0 +1,9 @@
+###
+##
+# configure the server for the Django application
+##
+###
+- include: f23.yml
+- include: nginx.yml
+- include: git.yml
+- include: postgres.yml

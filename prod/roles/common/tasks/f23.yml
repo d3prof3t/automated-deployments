@@ -1,0 +1,12 @@
+##
+# updates the DNF package cache and install packages as a root user
+##
+- name: Setting up bare minimum packages required
+  dnf: name={{item}} state=latest
+  become: yes
+  with_items:
+    - fail2ban
+    - python3-devel
+    - python-devel
+    - gcc
+    - libselinux-python

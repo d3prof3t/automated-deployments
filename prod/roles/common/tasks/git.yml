@@ -1,0 +1,23 @@
+##
+# Clones and Pulls the repo
+##
+- name: Setting up Git Configuration
+  dnf: name=git state=latest
+  become: yes
+
+- name: Create a Deploy key direcotry if not exists
+  file: path=/home/{{ deployer_user }}/deploy_keys state=directory
+  become: yes
+
+- name: Ensure the private deploy key is on the remote server
+  copy: src={{ local_deploy_key_dir }}/deploy_key
+            dest=/home/{{ deployer_user }}/deploy_keys/deploy_key
+            mode=0600 owner={{ deployer_user }} group={{ deployer_group }}
+  become: yes
+
+- name: Clone or pull the latest code
+  git: repo={{ code_repository_url }}
+        dest={{ app_dir }}
+        key_file=/home/{{ deployer_user }}/deploy_keys/deploy_key
+        accept_hostkey=yes
+  become: yes

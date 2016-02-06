@@ -1,0 +1,7 @@
+- name: restart nginx
+  service: name=nginx state=restarted enabled=yes
+  become: yes
+
+- name: restart postgres
+  service: name=postgresql state=restarted
+  become: yes
