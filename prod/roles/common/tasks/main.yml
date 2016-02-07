@@ -4,6 +4,10 @@
 ##
 ###
 - include: f23.yml
-- include: nginx.yml
 - include: git.yml
 - include: postgres.yml
+- include: dependencies.yml
+- include: gunicorn.yml
+- include: nginx.yml
+- include: selinux.yml
+- include: systemd.yml

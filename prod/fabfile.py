@@ -21,8 +21,7 @@ abs_dir_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env.user = 'root'
 
 # List of remote IP's
-env.hosts = ['<remote-server-ip>']
-# env.hosts = ['128.199.208.174']
+# env.hosts = ['<remote-server-ip>']
 
 # Password for the remote server
 # env.password = '<remote-server-password>'

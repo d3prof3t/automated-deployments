@@ -1,0 +1,13 @@
+##
+# Tweaks SELinux to make our App Run
+##
+- name: Install Policy Rules in SELinux
+  dnf: name=policycoreutils-devel state=latest
+  become: yes
+
+- name: Modify Policy Rules
+  raw: cat /var/log/audit/audit.log | grep nginx | grep denied | audit2allow -M mynginx; semodule -i mynginx.pp
+  become: yes
+  notify:
+    - start service
+    - restart nginx

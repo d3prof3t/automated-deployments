@@ -1,0 +1,14 @@
+##
+# Sets up all the dependecies in a VirtualEnv required by our Django Project
+##
+- name: Create a VirtualEnv Directory if not exists
+  file: path={{ venv_dir }} state=directory
+
+- name: Install dependecies in the new VirtualEnv
+  pip: requirements={{ app_dir }}/requirements.txt
+          virtualenv={{ venv_dir }}
+          virtualenv_python=python3.4
+
+- name: Create the .env file for running ad-hoc python commands in our virtualenv
+  template: src=env.j2 dest={{ app_dir }}/.env
+  become: yes

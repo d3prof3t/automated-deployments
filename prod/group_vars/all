@@ -1,5 +1,5 @@
 # App Name
-app_name: Django-Bootstrap
+app_name: django_bootstrap
 
 # Deployer User and Groups
 deployer_user: deployer
@@ -9,7 +9,7 @@ deployer_group: deployers
 ssh_dir: ~/Projects/python/automated-deployments/ssh_keys
 
 # Remote Server Details
-server_ip: 128.199.208.174
+server_ip: 128.199.168.57
 wsgi_server_port: 8000
 
 # App Direcotory
@@ -26,3 +26,16 @@ db_url: postgresql://{{deployer_user}}:{{db_password}}@localhost/{{app_name}}
 db_password: thisissomeseucrepassword
 db_name: "{{ app_name }}"
 db_user: "{{ deployer_user }}"
+
+# Application Dependencies Setup
+venv_dir: '/home/{{ deployer_user }}/envs/{{ app_name }}'
+venv_python: '{{ venv_dir }}/bin/python3.4'
+
+# Deploy Dir in App Directory
+deploy_dir: '{{ app_dir }}/deploy'
+
+# WSGI Vars
+django_wsgi_module: config.wsgi
+django_settings_module: config.settings.production
+django_secret_key: w2iaz9ztk@kgo*3m+x16q&mhnu#7d-axw$^(e7puqkbh$a+6v*
+database_url: '{{ db_url }}'
