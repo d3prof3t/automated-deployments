@@ -5,7 +5,7 @@
   dnf: name=git state=latest
   become: yes
 
-- name: Create a Deploy key direcotry if not exists
+- name: Create a Deploy key directory if not exists
   file: path=/home/{{ deployer_user }}/deploy_keys state=directory
   become: yes
 

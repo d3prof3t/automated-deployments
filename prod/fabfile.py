@@ -61,6 +61,8 @@ def start_provision():
     create_deployers_group()
     ceate_deployer_user()
     upload_keys()
+    disabling_firewall()
+    set_selinux_permissive()
     run('service sshd reload')
     upgrade_server()
 
@@ -118,3 +120,19 @@ def upload_keys():
         env.host_string
     )
     local(scp_command)
+
+
+def disabling_firewall():
+    """
+    Disable Firewall
+    """
+    run('systemctl stop firewalld')
+    run('systemctl disable firewalld rolekit')
+
+
+def set_selinux_permissive():
+    """
+    Set SELinux in Permissive/Disabled Mode
+    """
+    # for Permissive
+    run('sudo setenforce 0')

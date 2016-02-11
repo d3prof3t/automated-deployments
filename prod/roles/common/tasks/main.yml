@@ -7,7 +7,7 @@
 - include: git.yml
 - include: postgres.yml
 - include: dependencies.yml
-- include: gunicorn.yml
+- include: migrations.yml
 - include: nginx.yml
-- include: selinux.yml
+- include: gunicorn.yml
 - include: systemd.yml

@@ -10,9 +10,9 @@
     - postgresql-devel
     - python-psycopg2
 
-# - name: PostgreSQL initdb command
-#   raw: postgresql-setup initdb
-#   become: yes
+- name: PostgreSQL initdb command
+  raw: postgresql-setup initdb
+  become: yes
 
 - name: Start and Enable PostgreSQL
   service: name=postgresql enabled=yes state=started

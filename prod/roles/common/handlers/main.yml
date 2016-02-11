@@ -6,6 +6,6 @@
   service: name=postgresql state=restarted
   become: yes
 
-- name: start service
-  service: name=django-bootstrap.service state=started enabled=yes
+- name: restart app
+  service: name=django-bootstrap state=restarted enabled=yes
   become: yes

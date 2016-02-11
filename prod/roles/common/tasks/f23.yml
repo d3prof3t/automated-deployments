@@ -5,6 +5,7 @@
   dnf: name={{item}} state=latest
   become: yes
   with_items:
+    - vim
     - fail2ban
     - python3-devel
     - python-virtualenv
