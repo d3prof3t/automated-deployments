@@ -1,5 +1,6 @@
 ##
-# Sets up all the dependecies in a VirtualEnv required by our Django Project
+# Filename: dependencies.yml
+# Description: Sets up all the dependecies in a VirtualEnv required by our Django Project
 ##
 - name: Create a VirtualEnv Directory if not exists
   file: path={{ venv_dir }} state=directory
