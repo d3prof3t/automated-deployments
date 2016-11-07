@@ -1,0 +1,6 @@
+##
+# Fixes the 502 Nginx Error Post Deployment
+#
+- name: Fixes Nginx 502 Error
+  raw: cd ~; cat /var/log/audit/audit.log | grep nginx | grep denied | audit2allow -M mynginx; semodule -i mynginx.pp
+  become: yes

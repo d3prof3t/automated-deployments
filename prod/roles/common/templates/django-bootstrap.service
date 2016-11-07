@@ -6,7 +6,9 @@ After=network.target
 
 [Service]
 PIDFile=/var/run/djangoBootstrap.pid
-ExecStart={{ deploy_dir }}/gunicorn_start
+User={{ deployer_user }}
+Group={{ deployer_group }}
+ExecStart=/bin/sh {{ deploy_dir }}/gunicorn_start
 Restart=on-abort
 
 [Install]

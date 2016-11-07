@@ -5,18 +5,18 @@ app_name: django_bootstrap
 deployer_user: deployer
 deployer_group: deployers
 
-# SSH Keys Diirectory
-ssh_dir: ~/Projects/python/automated-deployments/ssh_keys
+# SSH Keys Directory
+ssh_dir: ~/Projects/github/automated-deployments/ssh_keys
 
 # Remote Server Details
-server_ip: <remote-server-ip>
+server_ip: 139.59.44.245
 wsgi_server_port: 8000
 
 # App Direcotory
 app_dir: /home/{{ deployer_user }}/{{app_name}}
 
 # Deploy Key Directory
-local_deploy_key_dir: ~/Projects/python/automated-deployments/deploy_keys
+local_deploy_key_dir: ~/Projects/github/automated-deployments/deploy_keys
 
 # Github Code's Repo URL
 code_repository_url: git@github.com:d3prof3t/Django-Bootstrap.git
@@ -29,7 +29,7 @@ db_user: "{{ deployer_user }}"
 
 # Application Dependencies Setup
 venv_dir: '/home/{{ deployer_user }}/envs/{{ app_name }}'
-venv_python: '{{ venv_dir }}/bin/python3.4'
+venv_python: '{{ venv_dir }}/bin/python3.5'
 
 # Deploy Dir in App Directory
 deploy_dir: '{{ app_dir }}/deploy'

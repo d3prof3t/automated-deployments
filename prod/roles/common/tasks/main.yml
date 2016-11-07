@@ -1,7 +1,7 @@
 ##
 # configure the server for the Django application
 ##
-- include: f23.yml
+- include: f24.yml
 - include: git.yml
 - include: postgres.yml
 - include: dependencies.yml
@@ -9,3 +9,5 @@
 - include: nginx.yml
 - include: gunicorn.yml
 - include: systemd.yml
+# needed incase you get a Nginx 502 Bad Gateway Error
+- include: fix-502.yml

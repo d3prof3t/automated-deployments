@@ -22,3 +22,4 @@
     - libwebp-devel
     - tcl-devel
     - tk-devel
+    - policycoreutils-devel

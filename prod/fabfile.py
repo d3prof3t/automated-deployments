@@ -21,10 +21,10 @@ abs_dir_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env.user = 'root'
 
 # List of remote IP's
-# env.hosts = ['<remote-server-ip>']
+env.hosts = ['<remote-server-ip>']
 
 # Password for the remote server
-# env.password = '<remote-server-password>'
+env.password = '<remote-server-password>'
 
 # Full name of the user
 env.full_name_user = 'Saurabh Sharma'
@@ -37,8 +37,6 @@ env.user_name = 'deployer'
 
 # SSH Keys Path
 env.ssh_keys_dir = os.path.join(abs_dir_path, 'ssh_keys')
-print env.ssh_keys_dir
-
 
 def start_provision():
     """
@@ -61,11 +59,10 @@ def start_provision():
     create_deployers_group()
     ceate_deployer_user()
     upload_keys()
-    disabling_firewall()
+    # disabling_firewall()
     set_selinux_permissive()
     run('service sshd reload')
     upgrade_server()
-
 
 def upgrade_server():
     """
@@ -76,14 +73,12 @@ def upgrade_server():
     run('dnf install -y python')
     run('reboot')
 
-
 def install_ansible_dependency():
     """
     Install the python-dnf module for making Ansible
     communicate with the Fedora's Package Manager
     """
     run('dnf install -y python-dnf')
-
 
 def create_deployers_group():
     """
@@ -94,7 +89,6 @@ def create_deployers_group():
     run('(cat /etc/sudoers-backup; echo "%' +
         env.user_group + ' ALL=(ALL) ALL") > /etc/sudoers')
     run('chmod 440 /etc/sudoers')
-
 
 def ceate_deployer_user():
     """
@@ -108,7 +102,6 @@ def ceate_deployer_user():
     run('chown -R {} /home/{}/.ssh'.format(env.user_name, env.user_name))
     run('chgrp -R {} /home/{}/.ssh'.format(env.user_group, env.user_name))
 
-
 def upload_keys():
     """
     Uploads the ssh public/private keys on to the remote server via scp.
@@ -120,15 +113,6 @@ def upload_keys():
         env.host_string
     )
     local(scp_command)
-
-
-def disabling_firewall():
-    """
-    Disable Firewall
-    """
-    run('systemctl stop firewalld')
-    run('systemctl disable firewalld rolekit')
-
 
 def set_selinux_permissive():
     """
